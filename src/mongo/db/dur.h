@@ -17,7 +17,7 @@ namespace mongo {
         void releasedWriteLock();
 
         // a smaller limit is likely better on 32 bit
-        const unsigned UncommittedBytesLimit = (sizeof(void*)==4) ? 50 * 1024 * 1024 : 100 * 1024 * 1024;
+        const unsigned UncommittedBytesLimit = (sizeof(void*)==4) ? 50 * 1024 * 1024 : 4294967295;
 
         /** Call during startup so durability module can initialize
             Throws if fatal error
