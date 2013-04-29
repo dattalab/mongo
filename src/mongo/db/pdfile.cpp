@@ -221,7 +221,7 @@ namespace mongo {
     int Extent::initialSize(int len) {
         long long sz = len * 16;
         if ( len < 1000 ) sz = len * 64;
-        if ( sz > 1000000000 )
+        if ( sz > 1000000000 || sz < 0)
             sz = 1000000000;
         int z = ((int)sz) & 0xffffff00;
         verify( z > len );
