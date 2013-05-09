@@ -54,7 +54,7 @@ namespace mongo {
     */
     const int BSONObjMaxInternalSize = BSONObjMaxUserSize + ( 16 * 1024 );
 
-    const int BufferMaxSize = 256 * 1024 * 1024;
+    const int BufferMaxSize = 512 * 1024 * 1024;
 
     void msgasserted(int msgid, const char *msg);
 
@@ -216,7 +216,7 @@ namespace mongo {
                 a = a * 2;
             if ( a > BufferMaxSize ) {
                 std::stringstream ss;
-                ss << "BufBuilder attempted to grow() to " << a << " bytes, past the 256MB limit.";
+                ss << "BufBuilder attempted to grow() to " << a << " bytes, past the 512MB limit.";
                 msgasserted(13548, ss.str().c_str());
             }
             data = (char *) al.Realloc(data, a);
